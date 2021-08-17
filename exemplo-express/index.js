@@ -4,7 +4,7 @@ const app = express(); //inicializa express
 
 app.get('/',function(req,res){
 
-    res.send('Hello World')
+    res.send('Hello chica')
 
 })
 
@@ -15,3 +15,5 @@ app.get('/blue',function(req,res){
 
 
 app.listen(3000)
+
+console.log('Servidor rodando')
