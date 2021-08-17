@@ -1,19 +1,20 @@
-const express = require('express'); //importa o express
 
-const app = express(); //inicializa express
-
-app.get('/',function(req,res){
-
-    res.send('Hello chica')
-
-})
-
-app.get('/blue',function(req,res){
-
-    res.send('<h1>Welcome, Blumer </h1>')
-})
+const prompt = require('prompt-sync')(); //importa o prompt-sync (é exatamente igual o input de python)
 
 
-app.listen(3000)
+const nome = prompt('Digite seu nome: ');
+let idade = parseInt(prompt('Digite sua idade: '));
 
-console.log('Servidor rodando')
+
+console.log(`O nome dele é: ${nome}`);
+console.log('A idade dele é: '+idade); //As duas formas de concatenar string
+
+
+if (idade >= 18){
+
+    console.log(`${nome} é maior de idaide.`)
+
+} else{
+
+    console.log(`${nome} é menor de idade.`)
+}
