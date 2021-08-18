@@ -3,7 +3,7 @@ const app = express();
 
 const port = 3003;
 
-lista =[
+const lista =[
 
     'Lucas',
     'Joana',
@@ -12,6 +12,21 @@ lista =[
     'Clara',
     'Marcela'
 ]
+const msgInicio=[
+
+    'Olá',
+    'Bem-vindo',
+    'Olha lá quem voltou'
+]
+
+
+function randomMinMax(min,max){
+    return Math.floor(Math.random()*(max-min)) + min;
+}
+
+
+
+
 app.get('/',(req,res)=>{
 
     res.send('Bem-vindo a minha lista de nomes:)')
@@ -31,7 +46,11 @@ app.get('/lista/:id', (req,res)=>{
 })  
 
 
+app.get('/random', (req,res)=>{
 
+    res.send(msgInicio[randomMinMax(0,3)])
+
+})
 
 
 
