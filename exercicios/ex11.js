@@ -14,4 +14,4 @@ function restaZero(n){
         console.log('O número é ímpar.')
 }}
 
-console.log(restaZero(n));
+restaZero(n);
