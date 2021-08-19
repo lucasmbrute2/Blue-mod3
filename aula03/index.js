@@ -58,7 +58,18 @@ app.put('/filmes/:id',(req,res)=>{
 })
 
 
+app.delete('/filmes/:id', (req,res)=>{
 
+    const id = req.params.id-1;
+    const filmeDeletado = filmes[id]
+    if(filmeDeletado ==undefined){
+        res.send('Filme não encontrado')
+    }else{
+        delete filmes[id];
+        res.send(`O filme foi deletado ${filmeDeletado}.`)
+    }
+    
+})
 
 
 
