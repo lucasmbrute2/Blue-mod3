@@ -66,7 +66,7 @@ app.post('/newgame',(req,res)=>{
     }      
 })
 
-
+//endpoint para editar itens na lista
 app.put('/changeGame/:id',(req,res)=>{
 
     const id  = req.params.id -1
@@ -76,7 +76,7 @@ app.put('/changeGame/:id',(req,res)=>{
     res.send(`O game ${gameAnterior} foi alterado para ${game} com sucesso!`)
 })
 
-
+//endpoint para deletar itens na lista, caso haja.
 app.delete('/deleteGame/:id',(req,res)=>{
 
     const id = req.params.id -1
@@ -89,7 +89,6 @@ app.delete('/deleteGame/:id',(req,res)=>{
     }
 
 })
-
 
 
 
