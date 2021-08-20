@@ -6,7 +6,7 @@ app.use(express.json())
 carros = []
 
 function Carro(modelo,tipo,combustivel,marca,ano){
-
+    
     this.modelo = modelo;
     this.tipo = tipo;
     this.combustivel = combustivel;
@@ -27,7 +27,7 @@ app.get('/lista',(req,res)=>{
 
 app.post('/addCar',(req,res)=>{
 
-    let carro = Carro(
+    let carro = new Carro(
         req.body.modelo,
         req.body.tipo,
         req.body.combustivel,
