@@ -65,7 +65,7 @@ app.delete('/filmes/:id', (req,res)=>{
     if(filmeDeletado ==undefined){
         res.send('Filme não encontrado')
     }else{
-        games.splice(id,1);
+        delete filmes[id];
         res.send(`O filme foi deletado ${filmeDeletado}.`)
     }
     
