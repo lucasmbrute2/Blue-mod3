@@ -17,6 +17,7 @@ o percentual de aumento aplicado;
 o valor do aumento;
 
 o novo salário, após o aumento.*/
+const prompt = require('prompt-sync')()
 const aumento20 = 0.2
 const aumento15 = 0.15
 const aumento10 = 0.1
@@ -43,7 +44,7 @@ function aumento(salario){
 }
 
 
-const prompt = require('prompt-sync')()
+
 
 let salario = parseInt(prompt('Informe o seu salário: '));
 console.log(aumento(salario))
