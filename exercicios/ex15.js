@@ -17,4 +17,34 @@ o percentual de aumento aplicado;
 o valor do aumento;
 
 o novo salário, após o aumento.*/
+const aumento20 = 0.2
+const aumento15 = 0.15
+const aumento10 = 0.1
+const aumento5 = 0.05
+
+function aumento(salario){
+    if(salario<=280){
+        let diferenca = salario*aumento20
+        let novoSalario = diferenca +salario
+        return `O novo salário é ${novoSalario} e o aumento foi de ${diferenca} reais`
+    }else if(salario<=700){
+        const diferenca = salario*aumento15
+        const novoSalario = diferenca +salario
+        return `O novo salário é ${novoSalario} e o aumento foi de ${diferenca} reais`
+    }else if(salario<=1500){
+        const diferenca = salario*aumento10
+        const novoSalario = diferenca +salario
+        return `O novo salário é ${novoSalario} e o aumento foi de ${diferenca} reais`
+    }else{
+        const diferenca = salario*aumento5
+        const novoSalario = diferenca +salario
+        return `O novo salário é ${novoSalario} e o aumento foi de ${diferenca} reais`
+    }
+}
+
+
+const prompt = require('prompt-sync')()
+
+let salario = parseInt(prompt('Informe o seu salário: '));
+console.log(aumento(salario))
 
