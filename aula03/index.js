@@ -22,8 +22,16 @@ const filmes = [
 
 
 //Funcoes de validação
+
+/* function getFilmesValidos(){
+   return filmes.filter(Boolean); -> isso é a msm coisa da função de baixo
+}*/ 
+
 const getFilmesValidos = ()=> filmes.filter(Boolean); 
+
+
 const getFilmesbyId = (id) => getFilmesValidos().find((filme)=> filme.id == id)
+
 
 
 app.get("/", (req, res) => {
@@ -31,7 +39,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/filmes", (req, res) => {
-  res.send(filmes.filter(Boolean)); //poderia usar a função aqui, mas preferi deixar ''chumbado'', pois só será usado aqui.
+  res.send(getFilmesValidos())
 });
 
 app.get("/filmes/:id", (req, res) => {

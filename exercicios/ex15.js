@@ -43,9 +43,6 @@ function aumento(salario){
     }
 }
 
-
-
-
 let salario = parseInt(prompt('Informe o seu salário: '));
 console.log(aumento(salario))
 
