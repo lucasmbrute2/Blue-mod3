@@ -52,7 +52,7 @@ app.get("/filmes/:id", (req, res) => {
   res.send(filme);
 });
 
-app.post("/filmes/add", (req, res) => {
+app.post("/filmes", (req, res) => {
   const filme = req.body
     
   if(!filme || !filme.nome || filme.imagemUrl){
