@@ -13,11 +13,10 @@ const filmes = [
     },
     {
         id:2,
-        nome: ""
-    },
-    {},
-    {},
-    {}
+        nome: "Aloha",
+        imagemUrl: "isso é um URL, acredite :)"    
+    },  
+    
 ];
 
 
@@ -28,9 +27,8 @@ const filmes = [
 }*/ 
 
 const getFilmesValidos = ()=> filmes.filter(Boolean); 
-
-
-const getFilmesbyId = (id) => getFilmesValidos().find((filme)=> filme.id == id)
+const getFilmesbyId = id => getFilmesValidos().find(elemento=> elemento.id === id)
+const getFilmebyIndex = id => getFilmesValidos().findIndex(elemento=> elemento.id ===id)
 
 
 
@@ -43,7 +41,7 @@ app.get("/filmes", (req, res) => {
 });
 
 app.get("/filmes/:id", (req, res) => {
-  const id = req.params.id;
+  const id = +req.params.id;
   const filme = getFilmesbyId(id);
 
   if (!filme) {
@@ -55,28 +53,34 @@ app.get("/filmes/:id", (req, res) => {
 app.post("/filmes", (req, res) => {
   const filme = req.body
     
-  if(!filme || !filme.nome || filme.imagemUrl){
+  if(!filme || !filme.nome || !filme.imagemUrl){
     res.status(400).send({
       message: "Filme inválido."
-    });    
+   });    
+  return
   }
-  const ultimoFilme = filmes[filmes.length -1];
-  if(filmes.length){}
-    
-    
-    
-    
-
-
+  const ultimoFilme = filmes[filmes.length-1]
+  if(filmes.length){
+    filme.id = ultimoFilme.id+1
+    filmes.push(filme)
+    res.send(`O filme "${filme.nome}" foi adicionado com sucesso.`)
+  }else{
+    filme.id = 1
+    filmes.push(filme)
+    res.send(`O filme "${filme.nome}" foi adicionado com sucesso.`)
+  }
+  
 });
 
 app.put("/filmes/:id", (req, res) => {
-  const id = req.params.id - 1;
-  const filme = req.body.filme;
-  const filmeAnterior = filmes[id];
-  filmes[id] = filme;
-
-  res.send(`O filme alterado foi ${filmeAnterior} e virou ${filme}`);
+  const id = +req.params.id;
+  const filme = req.body
+  const index = getFilmebyIndex(id)
+  const filmeAnterior = filmes[index]
+  filmes[index] = filme
+  
+  // res.send(`O filme alterado foi ${filmeAnterior} e virou ${filme}`);
+  res.send(`O filme ${filmeAnterior.nome} foi alterado para ${filme.nome}`)
 });
 
 app.delete("/filmes/:id", (req, res) => {
