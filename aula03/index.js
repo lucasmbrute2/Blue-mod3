@@ -1,4 +1,5 @@
 const express = require("express");
+const { get } = require("http");
 const { send } = require("process");
 const app = express();
 const port = 3001;
@@ -77,21 +78,37 @@ app.put("/filmes/:id", (req, res) => {
   const filme = req.body
   const index = getFilmebyIndex(id)
   const filmeAnterior = filmes[index]
+  if(index <0){
+    res.status(404).send({
+      message: "O filme não foi encontrado, tente novamente."
+    })
+  }
+  if(!Object.keys(filme).length){
+    res.status(404).send({
+      message: "O body está vazio!"
+    })
+  };
+  if(!filme ||!filme.nome ||filme.imagemUrl){
+    res.status(404).send({
+      message:'O conteúdo não foi encontrado'
+    })
+  }
   filmes[index] = filme
-  
-  // res.send(`O filme alterado foi ${filmeAnterior} e virou ${filme}`);
   res.send(`O filme ${filmeAnterior.nome} foi alterado para ${filme.nome}`)
 });
 
 app.delete("/filmes/:id", (req, res) => {
-  const id = req.params.id - 1;
-  const filmeDeletado = filmes[id];
-  if (filmeDeletado == undefined) {
-    res.send("Filme não encontrado");
-  } else {
-    delete filmes[id];
-    res.send(`O filme foi deletado ${filmeDeletado}.`);
+  const id = req.params.id ;
+  const index = getFilmebyIndex(id)
+  console.log(index)
+  if(index <0){
+    res.status(404).send({
+      message:"Filme não encontrado"
+    })
   }
+  filmes.splice(index,1)
+  res.send('Filme deletado com sucesso!')
+
 });
 
 app.listen(port, () => {
