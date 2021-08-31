@@ -3,20 +3,17 @@ const mongoose = require('mongoose');
 const Usuario = require('./models/usuario')
 const app = express();
 //url de conexão -> mongodb://servidor:porta/nomo do banco
-mongoose.connect("mongodb://localhost:27017/usuario", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
 
 
-const usuario1 = new Usuario({
-    nome:"Lucas",
-    sobrenome: "Souza",
-    cpf: "13233131313",
-    idade: 21,
-    senha: "blue"
 
-})
+// const usuario1 = new Usuario({
+//     nome:"Lucas",
+//     sobrenome: "Souza",
+//     cpf: "13233131313",
+//     idade: 21,
+//     senha: "blue"
+
+// })
 
 //funções assincronas -> aqui cadastra dados 
 // usuario1.save()
