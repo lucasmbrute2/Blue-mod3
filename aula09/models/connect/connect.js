@@ -7,4 +7,4 @@ function Conn(url,porta,banco){
     }).then(()=>console.log("MongoDB connected")).catch(err=>console.error(err))
 }
 
-module.exports = Conn();
+module.exports = Conn;
