@@ -36,4 +36,4 @@ router.delete("/delete/:id", async (req,res) =>{
   .then(()=>res.status(200).send('Filme deletado com sucesso!'))
   .catch(()=>res.status(400).send('Algo deu errado.'))
 })
-module.exports = router;
+
