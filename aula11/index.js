@@ -3,7 +3,7 @@ const app = express();
 app.use(express.json());
 const Connect = require("./connect/connect");
 
-Connect("localhost", 27017, "listafilmes");
+Connect();
 const port = 3000;
 
 const Filmerota = require("./routes/filmes.routes");
