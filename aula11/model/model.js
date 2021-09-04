@@ -6,6 +6,7 @@ const filmeModel = new mongoose.Schema({
   duracao: { type: Number, required: true },
   trailer: { type: String },
   faixa: { type: Number, required: true },
+  dataCriacao: {type: Date , Default: Date.now}
 });
 
 const Filme = mongoose.model("filmes", filmeModel);
