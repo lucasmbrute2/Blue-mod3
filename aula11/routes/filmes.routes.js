@@ -19,10 +19,10 @@ router.get("/filme/:id", async (req, res) => {
 router.post("/add", async (req, res) => {
   await Filme.create(req.body)
     .then(() => {
-      res.status(200).send("Música adicionada com sucesso");
+      res.status(200).send("Filme adicionado com sucesso");
     })
     .catch((err) => {
-      res.status(400).send("Algo deu errado, tente novamente.");
+      res.status(400).send(err);
     });
 });
 
@@ -31,6 +31,12 @@ router.put("/update/:id", async (req, res) => {
     .then(() => res.status(200).send("Filme atualizado com sucesso!"))
     .catch((err) => res.status(400).send("Algo deu errado"));
 });
+
+router.delete("/delete" ,async (req,res)=>{
+  await Filme.deleteMany()
+  .then(()=>res.status(200).send("Você deletou toda a lista com sucesso!"))
+  .catch((err)=>res.status(400).send(err))
+})
 
 router.delete("/delete/:id", async (req,res) =>{
   await Filme.deleteOne({_id: req.params.id})
