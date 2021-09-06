@@ -6,6 +6,10 @@ app.use(express.json());
 
 const port = 3000;
 Connect()
+app.get('/index', (req,res)=>{
+  res.send("<h1>Hello</h1>")
+})
+
 app.use("",router)
 app.listen(port, () => {
   console.info(`Servidor rodando em http://localhost:${port}`);
